@@ -7,8 +7,6 @@ import Pricing from "@/Component/Sections/Pricing";
 import FAQ from "@/Component/Sections/Faq";
 import Footer from "@/Component/Footer";
 
-import "@/Lib/FontAwesome";
-import "@fortawesome/fontawesome-svg-core/styles.css"; // Import the CSS
 export default function Home() {
   return (
     <>

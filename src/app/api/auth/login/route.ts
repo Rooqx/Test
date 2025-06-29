@@ -12,7 +12,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "User not found" }, { status: 404 });
     }
 
-    // In production, use bcrypt.compare() for hashed passwords!
     if (user.password !== password) {
       return NextResponse.json(
         { error: "Invalid credentials" },
@@ -20,7 +19,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // You can return user data or a token here
     return NextResponse.json(
       {
         message: "Login successful",
