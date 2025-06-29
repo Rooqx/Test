@@ -10,6 +10,7 @@ import {
   Legend,
   ChartData,
   ChartOptions,
+  Plugin,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
@@ -22,14 +23,18 @@ ChartJS.register(
   Legend
 );
 
-const roundedBarsPlugin = {
+const roundedBarsPlugin: Plugin<"bar"> = {
   id: "roundedBars",
-  beforeDraw: (chart: any) => {
+  afterDatasetsDraw: (chart) => {
     const ctx = chart.ctx;
-    chart.data.datasets.forEach((dataset: any, i: number) => {
+    chart.data.datasets.forEach((dataset, i) => {
       const meta = chart.getDatasetMeta(i);
-      meta.data.forEach((bar: any) => {
-        const { x, y, width, height } = bar;
+      meta.data.forEach((bar) => {
+        const { x, y, width, height } = bar.getProps(
+          ["x", "y", "width", "height"],
+          true
+        );
+        ctx.save();
         ctx.beginPath();
         ctx.moveTo(x + 6, y);
         ctx.lineTo(x + width - 6, y);
@@ -38,7 +43,13 @@ const roundedBarsPlugin = {
         ctx.lineTo(x, y + height);
         ctx.lineTo(x, y + 6);
         ctx.quadraticCurveTo(x, y, x + 6, y);
+        ctx.fillStyle =
+          (bar.options &&
+            (bar.options as { backgroundColor?: string }).backgroundColor) ||
+          (dataset as { backgroundColor?: string }).backgroundColor ||
+          "#000"; // fallback to black if undefined
         ctx.fill();
+        ctx.restore();
       });
     });
   },

@@ -45,13 +45,17 @@ export default function RoundedBarVisual() {
       x: {
         grid: {
           display: false, // removes vertical grid lines
-          drawBorder: false, // removes x-axis line
+        },
+        border: {
+          display: false, // removes x-axis line
         },
       },
       y: {
         grid: {
           display: false,
-          drawBorder: false,
+        },
+        border: {
+          display: false, // removes y-axis line
         },
         beginAtZero: true,
       },

@@ -6,7 +6,7 @@ import { useAuth } from "../AuthContext";
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login, isLoggedIn, user } = useAuth();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);

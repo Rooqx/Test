@@ -67,9 +67,10 @@ export default function Dashboard(): JSX.Element {
       }
     };
     fetchUserData();
-  }, [isLoggedIn, user]);
+  }, [isLoggedIn, user, router]);
 
   const handleExpensesFrequency = (/*type: string*/) => {
+    setExpensesFrequency({ ...expensesFrequency, daily: true });
     /*  if (type === "daily") {
       setExpensesFrequency({ ...expensesFrequency, daily: true });
     }

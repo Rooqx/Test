@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Testimonials() {
   const testimonials = [
     {
@@ -42,10 +44,12 @@ export default function Testimonials() {
               className="bg-gray-50 rounded-2xl p-8 border border-gray-200"
             >
               <div className="flex items-center mb-6">
-                <img
+                <Image
                   className="w-12 h-12 rounded-full"
                   src={testimonial.avatar}
                   alt={testimonial.name}
+                  width={48}
+                  height={48}
                 />
                 <div className="ml-4">
                   <h4 className="font-bold text-gray-900">
