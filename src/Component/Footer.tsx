@@ -26,22 +26,22 @@ export default function Footer(): JSX.Element {
         </li>
 
         <li className="flex justify-center hover:bg-[#00000098] items-center py-4 w-full h-full text-black transition-all duration-500">
-          <a
+          <Link
             className="border-r border-white w-full h-[20px] flex justify-center items-center flex-col gap-2 "
-            href="/cart"
+            href="/"
           >
             <Image src="/settings.svg" width={15} height={15} alt="bell" />
             Settings
-          </a>
+          </Link>
         </li>
         <li className="flex justify-center hover:bg-[#00000098] items-center py-4 w-full  text-black transition-all duration-500">
-          <a
+          <Link
             className="flex flex-col items-center justify-center w-full gap-2 "
             href="/user"
           >
             <Image src="/user.svg" width={15} height={15} alt="bell" />
             Account
-          </a>
+          </Link>
         </li>
       </ul>
     </footer>

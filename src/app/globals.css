@@ -27,7 +27,7 @@ body {
 .fade-in-section {
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 0.7s forwards;
+  animation: fadeInUp 2s forwards;
 }
 @keyframes fadeInUp {
   to {
