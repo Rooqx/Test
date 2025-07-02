@@ -2,10 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 export default function Hero() {
   return (
-    <section className="bg-gradient-to-br from-gray-50 to-indigo-50 py-16 md:py-24">
+    <section className="bg-gradient-to-br from-gray-50 to-indigo-50 py-16 md:py-24 fade-in-section">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 mb- md:mb-0">
+          <div
+            className="md:w-1/2 mb- md:mb-0 fade-in-section"
+            style={{ animationDelay: "0ms" }}
+          >
             <div className="flex flex-col justify-center item">
               <p className="ml-4 text-gray-600 w-full text-center text-sm">
                 Join{" "}
@@ -42,7 +45,10 @@ export default function Hero() {
               <div className="flex -space-x-2 w-full"></div>
             </div>
           </div>
-          <div className=" w-[400px] md:w-[500px] flex justify-center ml-5">
+          <div
+            className=" w-[400px] md:w-[500px] flex justify-center ml-5 fade-in-section"
+            style={{ animationDelay: "100ms" }}
+          >
             <Image src="/mockup.png" alt="dashboard" width={300} height={200} />
           </div>
         </div>

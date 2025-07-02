@@ -92,7 +92,7 @@ export default function Dashboard(): JSX.Element {
       <main className="w-full px-2 py-5">
         <div>
           <div className="flex w-full gap-10 text-sm text-gray-700">
-            <p className="w-full -mr-[55px] font-bold text-center">
+            <p className="w-full -mr-[55px] font-bold text-center mb-5 mt-2">
               Dashboard Overview
             </p>
             {/** Icons Here (Refresh, Search, notifications) */}
@@ -161,7 +161,7 @@ export default function Dashboard(): JSX.Element {
                 </div>
               </button>
               {/** Expenses Chart */}
-              <div className="flex flex-col w-full bg-white h-[250px] rounded-2xl shadow-md mt-2 overflow-hidden">
+              <div className="flex flex-col w-full bg-white h-[360px] md:h-[400] p-2 rounded-2xl shadow-md mt-2 overflow-hidden">
                 <div>
                   <div className="flex justify-start gap-5 px-5 py-5 text-sm font-semibold text-gray-500 md:text-md lg:text-md">
                     <p
@@ -211,7 +211,7 @@ export default function Dashboard(): JSX.Element {
                 </div>
               </div>
               {/**Savings Chart */}
-              <div className="flex flex-col w-full bg-white h-[250px] rounded-2xl shadow-md mt-2">
+              <div className="flex flex-col w-full bg-white h-[370px] md:h-[400] p-2 rounded-2xl shadow-md mt-2 overflow-hidden">
                 <div>
                   <div className="px-5 py-5">
                     <p>Saved</p>

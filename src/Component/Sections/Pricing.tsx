@@ -52,34 +52,28 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="py-16 bg-gray-50">
+    <section id="pricing" className="py-16 bg-gray-50 fade-in-section">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Simple, Transparent Pricing
           </h2>
           <p className="text-lg text-gray-600">
-            Choose the plan that fits your financial goals
+            Choose the plan that fits your needs
           </p>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan, index) => (
             <div
-              key={index}
-              className={`bg-white rounded-2xl p-8 border-2 ${
+              key={plan.name}
+              className={`rounded-2xl p-8 shadow-2xl border-2 transition-transform duration-300 hover:-translate-y-2 hover:shadow-indigo-200 fade-in-section ${
                 plan.popular
-                  ? "border-indigo-600 relative transform lg:-translate-y-4"
-                  : "border-gray-200"
+                  ? "bg-gradient-to-br from-indigo-600 to-blue-500 text-white border-indigo-600"
+                  : "bg-white border-gray-100"
               }`}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              {plan.popular && (
-                <div className="absolute top-4 right-4 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                  MOST POPULAR
-                </div>
-              )}
-
-              <div className="mb-6">
+              <div className="flex items-center justify-between mb-4">
                 <h3
                   className={`text-xl font-bold ${
                     plan.popular ? "text-white" : "text-gray-900"
@@ -87,77 +81,57 @@ export default function Pricing() {
                 >
                   {plan.name}
                 </h3>
-                <div className="flex items-baseline">
-                  <span
-                    className={`text-3xl font-bold ${
-                      plan.popular ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    ${plan.price}
+                {plan.popular && (
+                  <span className="bg-white text-indigo-700 px-3 py-1 rounded-full text-xs font-bold shadow">
+                    Most Popular
                   </span>
-                  <span
-                    className={`ml-2 ${
-                      plan.popular ? "text-indigo-200" : "text-gray-500"
-                    }`}
-                  >
-                    / {plan.period}
-                  </span>
-                </div>
-                <p
-                  className={`mt-2 ${
-                    plan.popular ? "text-indigo-200" : "text-gray-600"
-                  }`}
-                >
-                  {plan.description}
-                </p>
+                )}
               </div>
-
-              <ul className="space-y-4 mb-8">
+              <div className="mb-6">
+                <span className="text-3xl font-extrabold">${plan.price}</span>
+                <span className="text-lg font-medium ml-1">/{plan.period}</span>
+              </div>
+              <p
+                className={`mb-6 ${
+                  plan.popular ? "text-indigo-100" : "text-gray-700"
+                }`}
+              >
+                {plan.description}
+              </p>
+              <ul className="mb-8 space-y-2">
                 {plan.features.map((feature, i) => (
-                  <li key={i} className="flex items-center">
-                    {plan.included[i] ? (
-                      <i
-                        className={`fas fa-check-circle ${
-                          plan.popular ? "text-white" : "text-green-500"
-                        } mr-3`}
-                      ></i>
-                    ) : (
-                      <i className="fas fa-times-circle text-gray-400 mr-3"></i>
-                    )}
-                    <span
-                      className={
-                        plan.popular
+                  <li
+                    key={i}
+                    className={`flex items-center gap-2 ${
+                      plan.included[i]
+                        ? plan.popular
                           ? "text-white"
-                          : plan.included[i]
-                          ? "text-gray-600"
-                          : "text-gray-400"
-                      }
-                    >
-                      {feature}
-                    </span>
+                          : "text-gray-900"
+                        : "text-gray-300 line-through"
+                    }`}
+                  >
+                    <i
+                      className={`fas fa-${
+                        plan.included[i] ? "check-circle" : "times-circle"
+                      } ${
+                        plan.included[i] ? "text-green-400" : "text-red-200"
+                      }`}
+                    ></i>
+                    {feature}
                   </li>
                 ))}
               </ul>
-
-              <a
-                href="#"
-                className={`block w-full text-center font-medium py-3 px-4 rounded-lg transition duration-300 ${
+              <button
+                className={`w-full py-3 rounded-2xl font-bold transition duration-300 shadow-lg ${
                   plan.popular
-                    ? "bg-white text-indigo-600 hover:bg-gray-100 font-bold"
-                    : "bg-gray-100 hover:bg-gray-200 text-gray-900"
+                    ? "bg-white text-indigo-700 hover:bg-indigo-100"
+                    : "bg-gradient-to-r from-indigo-600 to-blue-500 text-white hover:from-blue-700 hover:to-indigo-700"
                 }`}
               >
                 {plan.cta}
-              </a>
+              </button>
             </div>
           ))}
-        </div>
-
-        <div className="mt-12 text-center text-gray-600 max-w-2xl mx-auto">
-          <p>
-            <i className="fas fa-lock mr-2"></i> All plans include bank-level
-            security and 256-bit encryption
-          </p>
         </div>
       </div>
     </section>

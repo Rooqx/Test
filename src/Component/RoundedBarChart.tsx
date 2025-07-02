@@ -47,7 +47,7 @@ const roundedBarsPlugin: Plugin<"bar"> = {
           (bar.options &&
             (bar.options as { backgroundColor?: string }).backgroundColor) ||
           (dataset as { backgroundColor?: string }).backgroundColor ||
-          "#000"; // fallback to black if undefined
+          "#000";
         ctx.fill();
         ctx.restore();
       });

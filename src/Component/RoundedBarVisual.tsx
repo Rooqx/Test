@@ -14,48 +14,65 @@ export default function RoundedBarVisual() {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        label: " ",
+        label: "Income",
         data: [65, 59, 80, 81, 56, 55],
-        backgroundColor: "rgba(54, 162, 235, 0.7)",
-        borderColor: "rgba(54, 162, 235, 1)",
-        borderWidth: 1,
+        backgroundColor: "#6366f1",
+        borderColor: "#6366f1",
+        borderWidth: 2,
+        borderRadius: 12,
+        barPercentage: 0.7,
+        categoryPercentage: 0.6,
       },
       {
         label: "Savings",
         data: [45, 39, 60, 71, 46, 35],
-        backgroundColor: "rgba(255, 99, 132, 0.7)",
-        borderColor: "rgba(255, 99, 132, 1)",
-        borderWidth: 1,
+        backgroundColor: "#60a5fa",
+        borderColor: "#60a5fa",
+        borderWidth: 2,
+        borderRadius: 12,
+        barPercentage: 0.7,
+        categoryPercentage: 0.6,
       },
     ],
   };
 
   const options: ChartOptions<"bar"> = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top" as const,
+        labels: {
+          color: "#6366f1",
+          font: { size: 16, weight: "bold" },
+        },
       },
-      title: {
-        display: false,
-        text: "Monthly Sales with Rounded Bars",
+      tooltip: {
+        backgroundColor: "#6366f1",
+        titleColor: "#fff",
+        bodyColor: "#fff",
+        borderColor: "#6366f1",
+        borderWidth: 1,
+        padding: 12,
       },
     },
     scales: {
       x: {
         grid: {
-          display: false, // removes vertical grid lines
+          color: "#e0e7ff",
         },
-        border: {
-          display: false, // removes x-axis line
+        ticks: {
+          color: "#6366f1",
+          font: { size: 14 },
         },
       },
       y: {
         grid: {
           display: false,
         },
-        border: {
-          display: false, // removes y-axis line
+        ticks: {
+          color: "#6366f1",
+          font: { size: 14 },
         },
         beginAtZero: true,
       },
@@ -63,12 +80,8 @@ export default function RoundedBarVisual() {
   };
 
   return (
-    <main className="-mt-12 p-5 w-full">
-      <div className="w-full mx-auto">
-        <div className="w-full h-[500px] md:h-[200px]">
-          <RoundedBarChart data={data} options={options} />
-        </div>
-      </div>
-    </main>
+    <div className="w-full h-[300px] md:h-[400px] lg:h-[400px] p-2 fade-in-section">
+      <RoundedBarChart data={data} options={options} />
+    </div>
   );
 }
